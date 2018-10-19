@@ -2,6 +2,7 @@ import React from "react";
 import { Col, Row, FormGroup, Button, Form, Input, Label, Modal, ModalHeader, ModalBody, ModalFooter} from "reactstrap";
 import { AuthContext} from "../authform/AuthContext";
 // import UpdateUser from '../userinfo/UpdateUser';
+import APIURL from '../helpers/environment';
 
 class Account extends React.Component {
   constructor(props) {
@@ -26,7 +27,7 @@ class Account extends React.Component {
   fetchAccountInfo = () => {
     let token = localStorage.getItem('token')
     // console.log(this.props.auth)
-    fetch("http://localhost:3000/user", {
+    fetch(`${APIURL}/user`, {
         method: 'GET',
         headers: new Headers({
           'Content-Type': 'application/json',
@@ -59,7 +60,7 @@ class Account extends React.Component {
   deleteAccount = () => {
     let token = localStorage.getItem('token')
     // console.log(this.props.auth)
-    fetch("http://localhost:3000/user", {
+    fetch(`${APIURL}/user`, {
         method: 'DELETE',
         headers: new Headers({
           'Content-Type': 'application/json',
@@ -72,7 +73,7 @@ class Account extends React.Component {
 
   updateAccount = () => {
     let token = localStorage.getItem('token')
-    fetch("http://localhost:3000/user", {
+    fetch(`${APIURL}/user`, {
       method: 'PUT',
       body: JSON.stringify({user:this.state}),
       headers: new Headers({

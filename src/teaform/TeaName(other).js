@@ -1,5 +1,6 @@
 import React from 'react';
 import {AuthContext} from '../authform/AuthContext';
+import APIURL from '../helpers/environment';
 
 class TeaName extends React.Component{
     constructor(props){
@@ -12,7 +13,7 @@ class TeaName extends React.Component{
     componentWillMount = () => this.showtea()
 
     showtea = () => {
-        fetch(`http://localhost:3000/tea/${this.props.teaId}`, {
+        fetch(`${APIURL}/tea/${this.props.teaId}`, {
             method: 'GET',
             headers: new Headers({
                 'Content-Type': 'application/json',
@@ -28,7 +29,15 @@ class TeaName extends React.Component{
 
     render(){
         return(
-            <p>{this.state.teaName}</p>
+            <div className="main">
+                <div className="mainDiv">
+                
+                            
+                    TeaName
+                    {this.state.teaName}
+                               
+                </div>
+            </div>
         )
     }
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import {Container, Row, Col, Form, FormGroup, Label, Input, Button} from 'reactstrap';
 import {AuthContext} from './AuthContext';
+import APIURL from '../helpers/environment';
 
 class Login extends React.Component{
     constructor(props) {
@@ -21,7 +22,7 @@ class Login extends React.Component{
     }
 
     handleSubmit = (e) => {
-        fetch("http://localhost:3000/user/login", {
+        fetch(`${APIURL}/user/login`, {
             method: 'POST',
             body: JSON.stringify({user:this.state}),
             headers: new Headers({

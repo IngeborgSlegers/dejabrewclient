@@ -2,8 +2,9 @@ import React from 'react';
 import {Container, Row, Col } from 'reactstrap';
 // import TeaTable from './TeaTable(backup)';
 import TeaBag from './TeaBag';
-import OrderForm from './OrderForm(backup)';
+import OrderForm from './OrderForm';
 import {AuthContext} from '../authform/AuthContext';
+import APIURL from '../helpers/environment';
 
 class TeaBox extends React.Component{
     constructor(props) {
@@ -19,7 +20,7 @@ class TeaBox extends React.Component{
     }
 
     fetchTeas = () => {
-        fetch("http://localhost:3000/tea", {
+        fetch(`${APIURL}/tea`, {
             method: 'GET',
             headers: new Headers({
                 'Content-Type': 'application/json',
@@ -72,7 +73,7 @@ class TeaBox extends React.Component{
     addToBox = (e) => {
         // console.log(this.state.teas)
         // this.setState({teaId: teaId})
-        fetch("http://localhost:3000/teabox", {
+        fetch(`${APIURL}/teabox`, {
             method: 'POST',
             body: JSON.stringify({teaId: e.target.id}),
             headers: new Headers({
